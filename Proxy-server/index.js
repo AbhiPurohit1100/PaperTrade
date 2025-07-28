@@ -2,7 +2,7 @@ const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
-// Replace this with the target server URL
+
 const targetUrl = 'https://api.backpack.exchange';
 
 // Handle CORS
@@ -19,10 +19,10 @@ app.use('/', createProxyMiddleware({
     target: targetUrl,
     changeOrigin: true,
     onProxyReq: (proxyReq, req, res) => {
-        // Optionally, you can modify the request here
+        
     },
     onProxyRes: (proxyRes, req, res) => {
-        // Optionally, you can modify the response here
+        
     }
 }));
 

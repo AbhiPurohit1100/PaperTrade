@@ -1,8 +1,9 @@
-
 export const AskTable = ({ asks }: { asks: [string, string][] }) => {
     let currentTotal = 0;
-    const relevantAsks = asks.slice(0, 15);
-    relevantAsks;
+    // Filter out asks with quantity zero
+    const relevantAsks = asks
+        .filter(([_, quantity]) => Number(quantity) > 0)
+        .slice(0, 15);
     const asksWithTotal: [string, string, number][] = relevantAsks.map(([price, quantity]) => [price, quantity, currentTotal += Number(quantity)]);
     const maxTotal = relevantAsks.reduce((acc, [_, quantity]) => acc + Number(quantity), 0);
     asksWithTotal.reverse();
@@ -27,9 +28,9 @@ function Ask({price, quantity, total, maxTotal}: {price: string, quantity: strin
         top: 0,
         left: 0,
         width: `${(100 * total) / maxTotal}%`,
-        height: "100%",
+        height: "85%",
         background: "rgba(228, 75, 68, 0.325)",
-        transition: "width 0.3s ease-in-out",
+        transition: "width 0.4s ease-in-out",
         }}
     ></div>
     <div className="flex justify-between text-xs w-full">

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Depth, KLine, Ticker, Trade } from "./types";
-
+//const BASE_URL= "https://papertrade-a9an.onrender.com/api/v1"
+//const BASE_URL = "https://paper-trade-seven.vercel.app/";
 const BASE_URL = "http://localhost:3001/api/v1";
 
 export async function getTicker(market: string): Promise<Ticker> {

@@ -1,7 +1,8 @@
-
 export const BidTable = ({ bids }: {bids: [string, string][]}) => {
     let currentTotal = 0; 
-    const relevantBids = bids.slice(0, 15);
+    // Filter out bids with zero quantity
+    const filteredBids = bids.filter(([_, quantity]) => Number(quantity) > 0);
+    const relevantBids = filteredBids.slice(0, 15);
     const bidsWithTotal: [string, string, number][] = relevantBids.map(([price, quantity]) => [price, quantity, currentTotal += Number(quantity)]);
     const maxTotal = relevantBids.reduce((acc, [_, quantity]) => acc + Number(quantity), 0);
 
@@ -27,9 +28,9 @@ function Bid({ price, quantity, total, maxTotal }: { price: string, quantity: st
             top: 0,
             left: 0,
             width: `${(100 * total) / maxTotal}%`,
-            height: "100%",
+            height: "85%",
             background: "rgba(1, 167, 129, 0.325)",
-            transition: "width 0.3s ease-in-out",
+            transition: "width 0.4s ease-in-out",
             }}
         ></div>
             <div className={`flex justify-between text-xs w-full`}>

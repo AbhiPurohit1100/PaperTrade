@@ -5,6 +5,7 @@ import { getDepth, getKlines, getTicker, getTrades } from "../../utils/httpClien
 import { BidTable } from "./BidTable";
 import { AskTable } from "./AskTable";
 import { SignalingManager } from "@/app/utils/SignalingManager";
+import type { Ticker } from "@/app/utils/types";
 
 export function Depth({ market }: {market: string}) {
     const [bids, setBids] = useState<[string, string][]>();
@@ -21,11 +22,11 @@ export function Depth({ market }: {market: string}) {
                     for (let j = 0; j < data.bids.length; j++)  {
                         if (bidsAfterUpdate[i][0] === data.bids[j][0]) {
                             bidsAfterUpdate[i][1] = data.bids[j][1];
-                            break;
+                            break; 
                         }
                     }
                 }
-                return bidsAfterUpdate; 
+                return bidsAfterUpdate;  
             });
 
             setAsks((originalAsks) => {
@@ -62,7 +63,7 @@ export function Depth({ market }: {market: string}) {
     return <div>
         <TableHeader />
         {asks && <AskTable asks={asks} />}
-        {price && <div>{price}</div>}
+        {price && <div className={ price ? "text-green-500" : "text-red-500"}>{price}</div>}
         {bids && <BidTable bids={bids} />}
     </div>
 }
