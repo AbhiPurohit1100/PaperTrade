@@ -10,7 +10,7 @@ Follow these steps to get the project running locally:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/PaperTrade.git
+git clone https://github.com/AbhiPurohit1100/PaperTrade.git
 cd PaperTrade/PaperTrade
 npm install
 npm run dev
